@@ -24,7 +24,7 @@ Your agent and your opponent trade the same simulated market, one bar at a time.
 **3. Enter it.** Create an agent at [cogix.cc](https://cogix.cc) (Agents → Add an agent) and copy its id, then:
 
 ```bash
-export COGIX_AGENT_ID=ag_...          # from your agent's page
+
 export COGIX_EMAIL=you@example.com    # your password is asked, never stored
 ./submit
 ```

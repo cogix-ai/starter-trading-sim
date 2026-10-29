@@ -19,9 +19,10 @@ own quiet way:
 Settings come from the environment, then a prompt:
 
     COGIX_API        default https://cogix.cc/api
-    COGIX_AGENT_ID   the agent this build is for (ag_…)
-    COGIX_EMAIL      your Cogix account
+    COGIX_EMAIL      your Cogix account (remembered in .cogix/settings.json)
     COGIX_PASSWORD   read from the environment or prompted; never stored
+    COGIX_AGENT_ID   optional: by default your agent is looked up after
+                     sign-in, and remembered for this folder
 """
 
 from __future__ import annotations
@@ -45,6 +46,7 @@ from . import __version__, signing
 DEFAULT_API = "https://cogix.cc/api"
 PLATFORM = "linux/amd64"
 KEY_FILE = pathlib.Path(".cogix") / "signing-key"
+SETTINGS_FILE = pathlib.Path(".cogix") / "settings.json"
 USER_AGENT = f"cogix-agent/{__version__} (+https://cogix.cc)"
 # Cloudflare in front of cogix.cc refuses request bodies over 100 MB.
 MAX_UPLOAD_BYTES = 100_000_000
@@ -106,6 +108,48 @@ def setting(name: str, prompt: str, *, secret: bool = False,
     if not value:
         raise SubmitError(f"{name} is required.")
     return value
+
+
+def load_settings(path: pathlib.Path = SETTINGS_FILE) -> dict:
+    """What this folder remembers between runs: the email and the agent. Never
+    the password."""
+    try:
+        return json.loads(path.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def save_settings(values: dict, path: pathlib.Path = SETTINGS_FILE) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(values, indent=2) + "\n")
+
+
+def choose_agent(rows: list, remembered: str = "",
+                 ask: Callable[[str], str] | None = None) -> dict:
+    """Pick the agent a build is for, from the account's own list.
+
+    The one remembered for this folder wins; a single agent needs no question;
+    several get a numbered list. Nobody has to find an id on a web page.
+    """
+    live = [r for r in rows if r.get("status") != "retired"]
+    if not live:
+        raise SubmitError(
+            "This account has no agent yet. Create one at https://cogix.cc/agents/new "
+            "(it only needs a name), then run ./submit again.")
+    for r in live:
+        if r.get("agent_id") == remembered:
+            return r
+    if len(live) == 1:
+        return live[0]
+    if ask is None:
+        if not sys.stdin.isatty():
+            raise SubmitError("This account has several agents. Set COGIX_AGENT_ID to choose one.")
+        ask = input
+    lines = "\n".join(f"  {i}. {r.get('name')}  ({r.get('agent_id')})" for i, r in enumerate(live, 1))
+    pick = ask(f"Which agent is this build for?\n{lines}\nNumber: ").strip()
+    if not pick.isdigit() or not 1 <= int(pick) <= len(live):
+        raise SubmitError(f"Pick a number from 1 to {len(live)}.")
+    return live[int(pick) - 1]
 
 
 # --- the platform ---------------------------------------------------------
@@ -218,8 +262,12 @@ def _say(line: str) -> None:
 
 def submit(context: pathlib.Path, entrypoints: list[str], say: Callable[[str], None] = _say) -> dict:
     api = Api(os.environ.get("COGIX_API", "").strip() or DEFAULT_API)
-    agent = setting("COGIX_AGENT_ID", "Agent id (ag_…, from your agent's page): ")
-    email = setting("COGIX_EMAIL", "Cogix email: ")
+    remembered = load_settings()
+    email = os.environ.get("COGIX_EMAIL", "").strip() or remembered.get("email", "")
+    if email:
+        say(f"Signing in as {email}")
+    else:
+        email = setting("COGIX_EMAIL", "Cogix email: ")
     password = setting("COGIX_PASSWORD", "Cogix password: ", secret=True)
 
     # Sign in first: a wrong password should cost a second, not a build.
@@ -228,6 +276,14 @@ def submit(context: pathlib.Path, entrypoints: list[str], say: Callable[[str], N
     api.token = login.get("dashboard_token") or ""
     if not api.token:
         raise SubmitError("Signed in, but the platform returned no session token.")
+
+    agent = os.environ.get("COGIX_AGENT_ID", "").strip()
+    if not agent:
+        rows = api.call("GET", "/v1/agents").get("agents") or []
+        chosen = choose_agent(rows, remembered.get("agent_id", ""))
+        agent = chosen["agent_id"]
+        say(f"    agent: {chosen.get('name')} ({agent})")
+    save_settings({"email": email, "agent_id": agent})
 
     say("2/5 Building your agent (linux/amd64)…")
     tag = f"cogix-submit/{agent.lower()}:latest"
