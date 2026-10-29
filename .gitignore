@@ -1,0 +1,4 @@
+.cogix/
+__pycache__/
+*.pyc
+.venv/

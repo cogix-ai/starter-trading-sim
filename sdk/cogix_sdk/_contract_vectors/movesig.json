@@ -1,0 +1,39 @@
+{
+  "domain": "arena-move-v1",
+  "priv_seed_b64": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA=",
+  "pub_key_b64": "ebVWLo/mVPlAeLES6KmLp5AfhTrmlb7X4OORC60ElmQ=",
+  "vectors": [
+    {
+      "match": "m_1",
+      "round": 1,
+      "seat": 0,
+      "card": 5,
+      "message_b64": "YXJlbmEtbW92ZS12MQptXzEKMQowCjU=",
+      "sig_b64": "F5yIjlpyHEwU7SF+BjKgMJZ1Xv7nGCf2YaafDpYK6+g/aUcaA5nbAXeQK8z7xyoeWKHWpEDeYSyg8zR6j7thDQ=="
+    },
+    {
+      "match": "m_1",
+      "round": 3,
+      "seat": 0,
+      "card": 9,
+      "message_b64": "YXJlbmEtbW92ZS12MQptXzEKMwowCjk=",
+      "sig_b64": "yipLL5bBughi7Go1jd9pSMx53IJLv3SmCjYK3CYC5sl/pumZhHefm3Nm5KqSMsutDkpZghU9CE/eQC4YjLFlCQ=="
+    },
+    {
+      "match": "m_2",
+      "round": 12,
+      "seat": 3,
+      "card": 13,
+      "message_b64": "YXJlbmEtbW92ZS12MQptXzIKMTIKMwoxMw==",
+      "sig_b64": "m9o2lU18BOa+6jMiAey+ik4POQ+c0fdIoMl0VqIds2I8X9bCTrKFAhwkmoqE8TV51LLW/UdTi3N4H8Q9G+C7Cg=="
+    },
+    {
+      "match": "cert_abc",
+      "round": 0,
+      "seat": 1,
+      "card": 0,
+      "message_b64": "YXJlbmEtbW92ZS12MQpjZXJ0X2FiYwowCjEKMA==",
+      "sig_b64": "Q4Uay2GBjBo2PYYoNmBKTSM2BnLfG12PjVHz14IJLGvBfacTFnMCfWaK3i/SboIB6msk7ox54PQuKwa+fscFBg=="
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "description": "max_reports binds at submit time. The third submission is refused with cap_reached so the agent learns immediately; discarding it silently at scoring time would be unfair, because the agent already spent budget producing it.",
+  "task": {
+    "challenge_id": "bug_hunt_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 900,
+      "tokens": 400000,
+      "tool_calls": 2000
+    },
+    "scenario_id": "sc-0001",
+    "pool_version": "bh-2026.08",
+    "repo_dir": "/work/repo",
+    "language": "python",
+    "max_reports": 2,
+    "bug_taxonomy": [
+      "off_by_one",
+      "boundary_error",
+      "inverted_condition",
+      "wrong_operator",
+      "swapped_args",
+      "missing_null_check",
+      "missing_bounds_check",
+      "resource_leak",
+      "race_condition",
+      "incorrect_error_handling",
+      "wrong_constant",
+      "dead_branch",
+      "type_confusion",
+      "missing_return",
+      "wrong_variable",
+      "state_mutation"
+    ]
+  },
+  "script": [
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 10,
+        "bug_type": "off_by_one",
+        "description": "a finding at index 0 with a long enough description"
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 1,
+        "reason": ""
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 30,
+        "bug_type": "off_by_one",
+        "description": "a finding at index 1 with a long enough description"
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 2,
+        "reason": ""
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 90,
+        "bug_type": "off_by_one",
+        "description": "one report past the cap"
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "cap_reached"
+      }
+    }
+  ],
+  "expect_stdout": "[{\"bug_type\":\"off_by_one\",\"description\":\"a finding at index 0 with a long enough description\",\"file\":\"a.py\",\"line\":10},{\"bug_type\":\"off_by_one\",\"description\":\"a finding at index 1 with a long enough description\",\"file\":\"a.py\",\"line\":30}]"
+}

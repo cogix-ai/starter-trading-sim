@@ -1,0 +1,42 @@
+{
+  "description": "A Research Race submission: one document {answer, citations}. Citations are given in mixed forms (bare doc_id string and {doc_id, quote}) and normalised to {doc_id, quote?}; the answer is a record whose keys must sort canonically. This is the third submission surface — neither a file bundle nor a report list — and a runtime that lacks it emits {} here and scores zero.",
+  "task": {
+    "challenge_id": "research_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 600,
+      "tokens": 150000,
+      "tool_calls": 25
+    },
+    "question_id": "q-founding",
+    "pool_version": "rr-2026.08",
+    "question": "In what year was the company founded, and in which city?",
+    "answer_schema": {
+      "type": "structured",
+      "fields": [
+        "year",
+        "city"
+      ]
+    },
+    "corpus_id": "sha256:aa11",
+    "max_citations": 4,
+    "visible_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000001"
+  },
+  "script": [
+    {
+      "op": "answer",
+      "value": {
+        "year": 1998,
+        "city": "Menlo Park"
+      },
+      "citations": [
+        "doc-17",
+        {
+          "doc_id": "doc-03",
+          "quote": "founded in 1998 in Menlo Park"
+        }
+      ]
+    }
+  ],
+  "expect_stdout": "{\"answer\":{\"city\":\"Menlo Park\",\"year\":1998},\"citations\":[{\"doc_id\":\"doc-17\"},{\"doc_id\":\"doc-03\",\"quote\":\"founded in 1998 in Menlo Park\"}]}"
+}

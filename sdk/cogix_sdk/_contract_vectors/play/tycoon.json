@@ -1,0 +1,1270 @@
+{
+  "game": "tycoon",
+  "seed": "contract:tycoon:v1",
+  "fixtures": [
+    {
+      "game": "tycoon",
+      "seat": 0,
+      "engine_version": "contract",
+      "state": {
+        "players": [
+          {
+            "seat": 0,
+            "cash": 1500,
+            "position": 0,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          },
+          {
+            "seat": 1,
+            "cash": 1500,
+            "position": 0,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          }
+        ],
+        "holdings": [
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          }
+        ],
+        "current": 0,
+        "phase": "roll",
+        "houses_remaining": 32,
+        "hotels_remaining": 12,
+        "last_roll": [
+          0,
+          0
+        ],
+        "roll_seq": 0,
+        "chance_order": null,
+        "chance_idx": 0,
+        "cc_order": null,
+        "cc_idx": 0,
+        "turn_count": 0,
+        "finished": false,
+        "winner": -1,
+        "next_seq": 2
+      },
+      "legal_actions": [
+        "roll"
+      ],
+      "deadline_ms": 2000
+    },
+    {
+      "game": "tycoon",
+      "seat": 0,
+      "engine_version": "contract",
+      "state": {
+        "players": [
+          {
+            "seat": 0,
+            "cash": 1500,
+            "position": 7,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 1,
+            "bankrupt": false,
+            "doubles": 0
+          },
+          {
+            "seat": 1,
+            "cash": 1500,
+            "position": 0,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          }
+        ],
+        "holdings": [
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          }
+        ],
+        "current": 0,
+        "phase": "manage",
+        "houses_remaining": 32,
+        "hotels_remaining": 12,
+        "last_roll": [
+          2,
+          5
+        ],
+        "roll_seq": 1,
+        "chance_order": null,
+        "chance_idx": 1,
+        "cc_order": null,
+        "cc_idx": 0,
+        "turn_count": 1,
+        "finished": false,
+        "winner": -1,
+        "next_seq": 5
+      },
+      "legal_actions": [
+        "end_turn",
+        "propose_trade"
+      ],
+      "deadline_ms": 2000
+    },
+    {
+      "game": "tycoon",
+      "seat": 0,
+      "engine_version": "contract",
+      "state": {
+        "players": [
+          {
+            "seat": 0,
+            "cash": 1500,
+            "position": 7,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 1,
+            "bankrupt": false,
+            "doubles": 0
+          },
+          {
+            "seat": 1,
+            "cash": 1500,
+            "position": 7,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          }
+        ],
+        "holdings": [
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          }
+        ],
+        "current": 0,
+        "phase": "roll",
+        "houses_remaining": 32,
+        "hotels_remaining": 12,
+        "last_roll": [
+          6,
+          1
+        ],
+        "roll_seq": 2,
+        "chance_order": null,
+        "chance_idx": 2,
+        "cc_order": null,
+        "cc_idx": 0,
+        "turn_count": 2,
+        "finished": false,
+        "winner": -1,
+        "next_seq": 12
+      },
+      "legal_actions": [
+        "roll"
+      ],
+      "deadline_ms": 2000
+    },
+    {
+      "game": "tycoon",
+      "seat": 0,
+      "engine_version": "contract",
+      "state": {
+        "players": [
+          {
+            "seat": 0,
+            "cash": 1500,
+            "position": 15,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 1,
+            "bankrupt": false,
+            "doubles": 0
+          },
+          {
+            "seat": 1,
+            "cash": 1500,
+            "position": 7,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          }
+        ],
+        "holdings": [
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          }
+        ],
+        "current": 0,
+        "phase": "acquire",
+        "houses_remaining": 32,
+        "hotels_remaining": 12,
+        "last_roll": [
+          6,
+          2
+        ],
+        "roll_seq": 3,
+        "chance_order": null,
+        "chance_idx": 2,
+        "cc_order": null,
+        "cc_idx": 0,
+        "turn_count": 3,
+        "finished": false,
+        "winner": -1,
+        "next_seq": 14
+      },
+      "legal_actions": [
+        "buy",
+        "decline"
+      ],
+      "deadline_ms": 2000
+    },
+    {
+      "game": "tycoon",
+      "seat": 0,
+      "engine_version": "contract",
+      "state": {
+        "players": [
+          {
+            "seat": 0,
+            "cash": 1300,
+            "position": 15,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 1,
+            "bankrupt": false,
+            "doubles": 0
+          },
+          {
+            "seat": 1,
+            "cash": 1500,
+            "position": 7,
+            "in_jail": false,
+            "jail_turns": 0,
+            "jail_cards": 0,
+            "bankrupt": false,
+            "doubles": 0
+          }
+        ],
+        "holdings": [
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": 0,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          },
+          {
+            "owner": -1,
+            "houses": 0,
+            "mortgaged": false
+          }
+        ],
+        "current": 0,
+        "phase": "manage",
+        "houses_remaining": 32,
+        "hotels_remaining": 12,
+        "last_roll": [
+          6,
+          2
+        ],
+        "roll_seq": 3,
+        "chance_order": null,
+        "chance_idx": 2,
+        "cc_order": null,
+        "cc_idx": 0,
+        "turn_count": 3,
+        "finished": false,
+        "winner": -1,
+        "next_seq": 15
+      },
+      "legal_actions": [
+        "end_turn",
+        "mortgage:15",
+        "propose_trade"
+      ],
+      "deadline_ms": 2000
+    }
+  ]
+}

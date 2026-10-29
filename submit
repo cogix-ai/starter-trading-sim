@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# DO NOT EDIT. Builds your agent and enters it on Cogix.
+#   export COGIX_AGENT_ID=ag_...  COGIX_EMAIL=you@example.com   (password is asked)
+set -euo pipefail
+cd "$(dirname "$0")"
+if [ ! -x .venv/bin/python ]; then
+  echo "First run: setting up a local Python environment…"
+  python3 -m venv .venv
+  .venv/bin/pip install -q ./sdk
+fi
+./test
+exec .venv/bin/python -m cogix_sdk.cli submit .

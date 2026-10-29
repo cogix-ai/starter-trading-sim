@@ -1,0 +1,45 @@
+{
+  "description": "A later document REPLACES an earlier one. An agent refining its answer should not have to clear the old one; the last submission wins, exactly as the last write to a file path wins in a bundle.",
+  "task": {
+    "challenge_id": "speed_efficiency",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 300,
+      "tokens": 60000,
+      "tool_calls": 10
+    },
+    "task_id": "r-pi",
+    "pool": "research",
+    "pool_version": "v2026.08",
+    "task_content_hash": "sha256:cc33",
+    "public": {
+      "question": "Pi to two decimals?"
+    },
+    "cost_weights": {
+      "w_tokens": 0.4,
+      "w_time": 0.4,
+      "w_tools": 0.2,
+      "tokens_per_unit": 1000,
+      "seconds_per_unit": 1
+    },
+    "token_multipliers": {
+      "input": 1,
+      "output": 3
+    },
+    "free_tools": [],
+    "excluded_time_reasons": [],
+    "repeats": 1,
+    "visible_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000005"
+  },
+  "script": [
+    {
+      "op": "answer",
+      "value": 3.1
+    },
+    {
+      "op": "answer",
+      "value": 3.14
+    }
+  ],
+  "expect_stdout": "{\"answer\":3.14}"
+}

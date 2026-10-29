@@ -1,0 +1,88 @@
+{
+  "description": "A Bug Hunt Race submission: three accepted reports. Exercises the optional region and confidence fields, and pins that bug_type is lower-cased on the way in by BOTH runtimes.",
+  "task": {
+    "challenge_id": "bug_hunt_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 900,
+      "tokens": 400000,
+      "tool_calls": 2000
+    },
+    "scenario_id": "sc-0001",
+    "pool_version": "bh-2026.08",
+    "repo_dir": "/work/repo",
+    "language": "python",
+    "max_reports": 36,
+    "line_tolerance": 3,
+    "alpha": 0.5,
+    "bug_taxonomy": [
+      "off_by_one",
+      "boundary_error",
+      "inverted_condition",
+      "wrong_operator",
+      "swapped_args",
+      "missing_null_check",
+      "missing_bounds_check",
+      "resource_leak",
+      "race_condition",
+      "incorrect_error_handling",
+      "wrong_constant",
+      "dead_branch",
+      "type_confusion",
+      "missing_return",
+      "wrong_variable",
+      "state_mutation"
+    ],
+    "bug_count_hint": 12
+  },
+  "script": [
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "src/orders/pricing.py",
+        "line": 118,
+        "bug_type": "BOUNDARY_ERROR",
+        "description": "tier upper bound is inclusive, should be exclusive",
+        "region": [
+          118,
+          118
+        ]
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 1,
+        "reason": ""
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "src/orders/refunds.py",
+        "line": 47,
+        "bug_type": "inverted_condition",
+        "description": "refund eligibility test is negated",
+        "confidence": 0.9
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 2,
+        "reason": ""
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "src/common/retry.py",
+        "line": 40,
+        "bug_type": "swapped_args",
+        "description": "backoff called with (max, base) not (base, max)"
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 3,
+        "reason": ""
+      }
+    }
+  ],
+  "expect_stdout": "[{\"bug_type\":\"boundary_error\",\"description\":\"tier upper bound is inclusive, should be exclusive\",\"file\":\"src/orders/pricing.py\",\"line\":118,\"region\":[118,118]},{\"bug_type\":\"inverted_condition\",\"confidence\":0.9,\"description\":\"refund eligibility test is negated\",\"file\":\"src/orders/refunds.py\",\"line\":47},{\"bug_type\":\"swapped_args\",\"description\":\"backoff called with (max, base) not (base, max)\",\"file\":\"src/common/retry.py\",\"line\":40}]"
+}

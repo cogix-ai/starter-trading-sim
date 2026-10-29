@@ -1,0 +1,52 @@
+{
+  "description": "A Speed/Efficiency coding-pool submission: {code, notes}. ONE source string, not a bundle — the challenge grades a single file against the Coding Duel hidden suite and meters the cost of producing it. The public half of the task is nested under `public`; the top level carries the cost weights the agent should read to pace itself. `notes` is transcript-only and never scored.",
+  "task": {
+    "challenge_id": "speed_efficiency",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 300,
+      "tokens": 60000,
+      "tool_calls": 10
+    },
+    "task_id": "p-add",
+    "pool": "coding",
+    "pool_version": "v2026.08",
+    "task_content_hash": "sha256:bb22",
+    "public": {
+      "problem_id": "p-add",
+      "language": "python",
+      "spec": "Return the sum of two integers.",
+      "starter": {
+        "solution.py": "def add(a, b):\n    pass\n"
+      },
+      "difficulty": 1
+    },
+    "cost_weights": {
+      "w_tokens": 0.4,
+      "w_time": 0.4,
+      "w_tools": 0.2,
+      "tokens_per_unit": 1000,
+      "seconds_per_unit": 1
+    },
+    "token_multipliers": {
+      "input": 1,
+      "output": 3
+    },
+    "free_tools": [
+      "run_tests"
+    ],
+    "excluded_time_reasons": [
+      "proxy_latency"
+    ],
+    "repeats": 1,
+    "visible_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000004"
+  },
+  "script": [
+    {
+      "op": "code",
+      "source": "def add(a, b):\n    return a + b\n",
+      "notes": "one-liner"
+    }
+  ],
+  "expect_stdout": "{\"code\":\"def add(a, b):\\n    return a + b\\n\",\"notes\":\"one-liner\"}"
+}

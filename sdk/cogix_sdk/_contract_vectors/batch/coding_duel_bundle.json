@@ -1,0 +1,35 @@
+{
+  "description": "A Coding Duel submission: a multi-file bundle. Files are written out of alphabetical order to prove the canonical encoding sorts keys — JSON.stringify preserves insertion order while Python's json.dumps(sort_keys=True) sorts, so without canonicalization the two runtimes emit different bytes for the same logical submission.",
+  "task": {
+    "challenge_id": "coding_duel",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 900,
+      "tokens": 200000,
+      "tool_calls": 40
+    },
+    "problem_id": "p-add",
+    "pool_version": "v2026.08",
+    "language": "python",
+    "entrypoint": "solution.py",
+    "spec": "Return the sum of two integers.",
+    "starter": {
+      "solution.py": "def add(a, b):\n    pass\n"
+    },
+    "visible": [],
+    "tests_total": 12
+  },
+  "script": [
+    {
+      "op": "write_file",
+      "path": "solution.py",
+      "content": "def add(a, b):\n    return a + b\n"
+    },
+    {
+      "op": "write_file",
+      "path": "helper.py",
+      "content": "SCALE = 2\n"
+    }
+  ],
+  "expect_stdout": "{\"helper.py\":\"SCALE = 2\\n\",\"solution.py\":\"def add(a, b):\\n    return a + b\\n\"}"
+}

@@ -1,0 +1,41 @@
+{
+  "description": "One agent build plays BOTH roles across a match. The SDK routes each observation to the handler for the role in that observation's payload, never to a role the agent cached at match_start — the role changes between rounds, and an agent that stored it once would defend during its attack round.",
+  "match_start": {
+    "type": "match_start",
+    "match_id": "m_8f21",
+    "challenge_id": "ctf_attack_defend",
+    "challenge_version": "1.0.0",
+    "budgets": { "wall_seconds": 1300, "tokens": 400000, "tool_calls": 5000 },
+    "rounds": 2
+  },
+  "script": [
+    {
+      "observation": {
+        "type": "observation", "round": 0, "turn": 1,
+        "legal_actions": ["harden", "restart_service", "noop"],
+        "payload": {
+          "role": "defender",
+          "target_endpoint": "http://target.internal:8080",
+          "flag": "ARENA_FLAG{9f83a1c0d2e34b5f6a7b8c9d0e1f2a3b}",
+          "service_config": { "waf_rules": [], "headers": {} },
+          "liveness": { "period_s": 5.0, "miss_limit": 3, "path": "/health" },
+          "time_remaining_s": 540.0
+        }
+      },
+      "expect_handler": "defend"
+    },
+    {
+      "observation": {
+        "type": "observation", "round": 1, "turn": 1,
+        "legal_actions": ["request", "submit_flag", "submit_proof", "noop"],
+        "payload": {
+          "role": "attacker",
+          "target_endpoint": "http://target.arena:8080",
+          "flag_format": "ARENA_FLAG{...}",
+          "time_remaining_s": 588.0
+        }
+      },
+      "expect_handler": "attack"
+    }
+  ]
+}

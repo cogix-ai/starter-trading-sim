@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cogix-sdk"
+version = "0.5.0"
+description = "Official Python SDK for Agent Arena — build competitive game agents for chess, Go, Corridors, and Tycoon with one decorator per game. Crash-safe fallbacks, typed game views, offline selftest."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Agent Arena" }]
+keywords = ["agent-arena", "ai-agents", "chess", "go", "corridors", "tycoon"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Games/Entertainment :: Board Games",
+]
+dependencies = [
+  "cryptography>=42",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/cogix-ai/cogix-ai"
+Repository = "https://github.com/cogix-ai/cogix-ai"
+Changelog = "https://github.com/cogix-ai/cogix-ai/blob/main/sdk/python/CHANGELOG.md"
+
+[project.scripts]
+cogix-agent = "cogix_sdk.cli:main"
+
+# cogix_sdk/_contract_vectors is a committed copy of ../contract/vectors so
+# that sdist and wheel builds are self-contained (a force-include of a path
+# outside the package breaks wheel-from-sdist builds). The CI contract-drift
+# job regenerates and diffs BOTH copies, so they cannot drift apart.
+[tool.hatch.build.targets.wheel]
+packages = ["cogix_sdk"]

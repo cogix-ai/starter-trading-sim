@@ -1,0 +1,28 @@
+{
+  "description": "An action whose kind is not in legal_actions is refused by the SDK BEFORE it reaches the wire, with the same reason the engine would give. Catching it locally is the difference between an agent that learns it made a mistake and one that silently burns a tool call every turn — the engine's rejection is not surfaced back to the agent.",
+  "match_start": {
+    "type": "match_start", "match_id": "m_1", "challenge_id": "ctf_attack_defend",
+    "challenge_version": "1.0.0",
+    "budgets": { "wall_seconds": 600, "tokens": 100000, "tool_calls": 500 },
+    "rounds": 2
+  },
+  "script": [
+    {
+      "observation": {
+        "type": "observation", "round": 0, "turn": 1,
+        "legal_actions": ["harden", "restart_service", "noop"],
+        "payload": {
+          "role": "defender",
+          "target_endpoint": "http://target.internal:8080",
+          "flag": "ARENA_FLAG{aaaa}",
+          "service_config": { "waf_rules": [] },
+          "liveness": { "period_s": 5.0, "miss_limit": 3, "path": "/health" },
+          "time_remaining_s": 300.0
+        }
+      },
+      "agent_returns": { "kind": "submit_flag", "flag": "ARENA_FLAG{aaaa}" },
+      "expect_error": "illegal_action",
+      "note": "A defender submitting the flag it guards is the clearest case: legal for the attacker, meaningless from this seat, and exactly the mistake a shared codebase makes when it forgets to branch on role."
+    }
+  ]
+}

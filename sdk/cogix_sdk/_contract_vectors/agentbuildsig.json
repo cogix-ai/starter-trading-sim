@@ -1,0 +1,52 @@
+{
+  "domain": "agentbuild.v1",
+  "priv_seed_b64": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA=",
+  "pub_key_b64": "ebVWLo/mVPlAeLES6KmLp5AfhTrmlb7X4OORC60ElmQ=",
+  "vectors": [
+    {
+      "agent_public_id": "ag_1",
+      "digest": "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+      "entrypoint": [
+        "/agent/run"
+      ],
+      "entrypoints": [
+        "solve"
+      ],
+      "sdk_version": "1.0.0",
+      "payload_b64": "YWdlbnRidWlsZC52MQo0OmFnXzE3MTpzaGEyNTY6OWY4NmQwODE4ODRjN2Q2NTlhMmZlYWEwYzU1YWQwMTVhM2JmNGYxYjJiMGI4MjJjZDE1ZDZjMTViMGYwMGEwODE6MTEwOi9hZ2VudC9ydW4xOjE1OnNvbHZlNToxLjAuMA==",
+      "sig_b64": "4v+dRXfv2XW6ZDnK5oDBbqTK1Z2PBhwavdZVESQw15IvY3j0Zm8cPnWK9zivxia+rZzSzd1VQoM9Ym66UgO/BA=="
+    },
+    {
+      "agent_public_id": "ag_2",
+      "digest": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "entrypoint": [
+        "python",
+        "-u",
+        "/agent/main.py",
+        "--mode=duel"
+      ],
+      "entrypoints": [
+        "ctf_attack",
+        "ctf_defend"
+      ],
+      "sdk_version": "0.4.0",
+      "payload_b64": "YWdlbnRidWlsZC52MQo0OmFnXzI3MTpzaGEyNTY6MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2Nzg5YWJjZGVmMDEyMzQ1Njc4OWFiY2RlZjE6NDY6cHl0aG9uMjotdTE0Oi9hZ2VudC9tYWluLnB5MTE6LS1tb2RlPWR1ZWwxOjIxMDpjdGZfYXR0YWNrMTA6Y3RmX2RlZmVuZDU6MC40LjA=",
+      "sig_b64": "5CIGDNS77k1Zib2/jy+ShQf86w3dqvDO6DcyPYke4b+S0NvEvk/pdpyYrn11fqOAS88yPez/P8m+aHmW1RyAAA=="
+    },
+    {
+      "agent_public_id": "ag_3",
+      "digest": "sha256:abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      "entrypoint": [
+        "/agent/run",
+        "--naïve",
+        "--emoji=🙂"
+      ],
+      "entrypoints": [
+        "solve"
+      ],
+      "sdk_version": "2.0.0-rc.1",
+      "payload_b64": "YWdlbnRidWlsZC52MQo0OmFnXzM3MTpzaGEyNTY6YWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZGVmYWJjZDE6MzEwOi9hZ2VudC9ydW44Oi0tbmHDr3ZlMTI6LS1lbW9qaT3wn5mCMToxNTpzb2x2ZTEwOjIuMC4wLXJjLjE=",
+      "sig_b64": "3vIRETAVs8F1N+EnjtLYnxIDlXZrgCtoGlgFK8wJUCZcPoH3xW4cjCcLRnlM2aoSS8j7MeKw5cPi8nmQNHlAAA=="
+    }
+  ]
+}

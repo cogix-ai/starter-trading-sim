@@ -1,0 +1,239 @@
+{
+  "challenge": "ctf_attack_defend",
+  "challenge_version": "1.1.0",
+  "description": "Frames captured from a real run of ctf.DriveAttacker and ctf.DriveDefender. An SDK replays these through its duel runtime and must answer every observation with a valid action: that is the assertion the hand-authored vectors could not make, because nothing compared them to the engine.",
+  "exchanges": [
+    {
+      "role": "attacker",
+      "frames": [
+        {
+          "type": "match_start",
+          "match_id": "match_contract_ctf",
+          "challenge_id": "ctf_attack_defend",
+          "challenge_version": "1.1.0",
+          "budgets": {
+            "wall_seconds": 1300,
+            "tokens": 400000,
+            "tool_calls": 5000
+          },
+          "rounds": 2,
+          "round": 1
+        },
+        {
+          "type": "observation",
+          "round": 1,
+          "turn": 0,
+          "legal_actions": [
+            "request",
+            "submit_flag",
+            "submit_proof",
+            "noop"
+          ],
+          "payload": {
+            "role": "attacker",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag_format": "cogix{...}",
+            "time_remaining_s": 599.9,
+            "proof_nonce": "0f1e2d3c4b5a69788796a5b4c3d2e1f0"
+          }
+        },
+        {
+          "type": "observation",
+          "round": 1,
+          "turn": 1,
+          "legal_actions": [
+            "request",
+            "submit_flag",
+            "submit_proof",
+            "noop"
+          ],
+          "payload": {
+            "role": "attacker",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag_format": "cogix{...}",
+            "time_remaining_s": 599.8,
+            "proof_nonce": "0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+            "last_response": {
+              "status": 200,
+              "body": "Welcome to the document service."
+            }
+          }
+        },
+        {
+          "type": "observation",
+          "round": 1,
+          "turn": 2,
+          "legal_actions": [
+            "request",
+            "submit_flag",
+            "submit_proof",
+            "noop"
+          ],
+          "payload": {
+            "role": "attacker",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag_format": "cogix{...}",
+            "time_remaining_s": 599.6,
+            "proof_nonce": "0f1e2d3c4b5a69788796a5b4c3d2e1f0",
+            "last_error": "submitted flag does not match"
+          }
+        },
+        {
+          "type": "observation",
+          "round": 1,
+          "turn": 3,
+          "legal_actions": [
+            "request",
+            "submit_flag",
+            "submit_proof",
+            "noop"
+          ],
+          "payload": {
+            "role": "attacker",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag_format": "cogix{...}",
+            "time_remaining_s": 599.5,
+            "proof_nonce": "0f1e2d3c4b5a69788796a5b4c3d2e1f0"
+          }
+        }
+      ]
+    },
+    {
+      "role": "defender",
+      "frames": [
+        {
+          "type": "match_start",
+          "match_id": "match_contract_ctf",
+          "challenge_id": "ctf_attack_defend",
+          "challenge_version": "1.1.0",
+          "budgets": {
+            "wall_seconds": 1300,
+            "tokens": 400000,
+            "tool_calls": 5000
+          },
+          "rounds": 2,
+          "round": 0
+        },
+        {
+          "type": "observation",
+          "round": 0,
+          "turn": 0,
+          "legal_actions": [
+            "harden",
+            "restart_service",
+            "noop"
+          ],
+          "payload": {
+            "role": "defender",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag": "cogix{0123456789abcdef0123456789abcdef}",
+            "service_config": {
+              "block_internal": "off"
+            },
+            "mutable_keys": [
+              "block_internal",
+              "offline"
+            ],
+            "liveness": {
+              "period_s": 5,
+              "miss_limit": 3,
+              "path": "/health"
+            },
+            "time_remaining_s": 599.9
+          }
+        },
+        {
+          "type": "observation",
+          "round": 0,
+          "turn": 1,
+          "legal_actions": [
+            "harden",
+            "restart_service",
+            "noop"
+          ],
+          "payload": {
+            "role": "defender",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag": "cogix{0123456789abcdef0123456789abcdef}",
+            "service_config": {
+              "block_internal": "on"
+            },
+            "mutable_keys": [
+              "block_internal",
+              "offline"
+            ],
+            "liveness": {
+              "period_s": 5,
+              "miss_limit": 3,
+              "path": "/health"
+            },
+            "time_remaining_s": 599.8,
+            "last_result": {
+              "status": "applied"
+            }
+          }
+        },
+        {
+          "type": "observation",
+          "round": 0,
+          "turn": 2,
+          "legal_actions": [
+            "harden",
+            "restart_service",
+            "noop"
+          ],
+          "payload": {
+            "role": "defender",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag": "cogix{0123456789abcdef0123456789abcdef}",
+            "service_config": {
+              "block_internal": "on"
+            },
+            "mutable_keys": [
+              "block_internal",
+              "offline"
+            ],
+            "liveness": {
+              "period_s": 5,
+              "miss_limit": 3,
+              "path": "/health"
+            },
+            "time_remaining_s": 599.7,
+            "last_result": {
+              "status": "rejected",
+              "message": "ctf: config key rewrite_binary is outside the mutable surface"
+            }
+          }
+        },
+        {
+          "type": "observation",
+          "round": 0,
+          "turn": 3,
+          "legal_actions": [
+            "harden",
+            "restart_service",
+            "noop"
+          ],
+          "payload": {
+            "role": "defender",
+            "target_endpoint": "stdio://loopback-arena/target",
+            "flag": "cogix{0123456789abcdef0123456789abcdef}",
+            "service_config": {
+              "block_internal": "on"
+            },
+            "mutable_keys": [
+              "block_internal",
+              "offline"
+            ],
+            "liveness": {
+              "period_s": 5,
+              "miss_limit": 3,
+              "path": "/health"
+            },
+            "time_remaining_s": 599.6
+          }
+        }
+      ]
+    }
+  ]
+}

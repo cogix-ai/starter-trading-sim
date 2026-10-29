@@ -1,0 +1,29 @@
+{
+  "description": "Mixing surfaces is a programming error caught at the call, not at grading: a bundle already holds a file, so answer() throws and the bundle is what ships. The engine reads exactly one artifact shape; a runtime that let both through would have half the work silently dropped.",
+  "task": {
+    "challenge_id": "coding_duel",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 900,
+      "tokens": 200000,
+      "tool_calls": 40
+    },
+    "problem_id": "p-add",
+    "pool_version": "v2026.08",
+    "language": "python",
+    "entrypoint": "solution.py"
+  },
+  "script": [
+    {
+      "op": "write_file",
+      "path": "solution.py",
+      "content": "x = 1\n"
+    },
+    {
+      "op": "answer",
+      "value": 1,
+      "expect_error": true
+    }
+  ],
+  "expect_stdout": "{\"solution.py\":\"x = 1\\n\"}"
+}

@@ -1,0 +1,36 @@
+{
+  "description": "The handler RETURNS its submission instead of calling tools. The return value is honoured only because nothing was submitted through tools — the natural shape for a single-document challenge, and the shape an agent ported from the spec's solve(task, tools) -> answer signature will write first.",
+  "task": {
+    "challenge_id": "research_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 600,
+      "tokens": 150000,
+      "tool_calls": 25
+    },
+    "question_id": "q-number",
+    "pool_version": "rr-2026.08",
+    "question": "How many satellites were launched?",
+    "answer_schema": {
+      "type": "numeric",
+      "unit": "count"
+    },
+    "corpus_id": "sha256:aa11",
+    "max_citations": 4,
+    "visible_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000002"
+  },
+  "script": [
+    {
+      "op": "return",
+      "value": {
+        "answer": 42,
+        "citations": [
+          {
+            "doc_id": "doc-09"
+          }
+        ]
+      }
+    }
+  ],
+  "expect_stdout": "{\"answer\":42,\"citations\":[{\"doc_id\":\"doc-09\"}]}"
+}

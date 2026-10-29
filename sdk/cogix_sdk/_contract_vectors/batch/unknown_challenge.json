@@ -1,0 +1,15 @@
+{
+  "description": "A task for a challenge this agent does not implement. The runtime emits an empty submission and exits 0. Exiting non-zero with no stdout would make an agent-side gap look identical to a platform fault, and the engine scores those very differently — an agent fault scores that agent zero, a platform fault scores NOBODY.",
+  "task": {
+    "challenge_id": "trading_sim",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 300,
+      "tokens": 100000,
+      "tool_calls": 500
+    }
+  },
+  "register": false,
+  "script": [],
+  "expect_stdout": "{}"
+}

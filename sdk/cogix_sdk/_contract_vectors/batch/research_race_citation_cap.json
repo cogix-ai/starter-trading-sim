@@ -1,0 +1,48 @@
+{
+  "description": "Citations beyond task.max_citations are refused at write time with an error the handler sees, rather than silently truncated or forwarded for the grader to drop. The handler then submits within the cap.",
+  "task": {
+    "challenge_id": "research_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 600,
+      "tokens": 150000,
+      "tool_calls": 25
+    },
+    "question_id": "q-cap",
+    "pool_version": "rr-2026.08",
+    "question": "Which two ports did the fleet use?",
+    "answer_schema": {
+      "type": "set"
+    },
+    "corpus_id": "sha256:aa11",
+    "max_citations": 2,
+    "visible_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000003"
+  },
+  "script": [
+    {
+      "op": "answer",
+      "value": [
+        "Lisbon",
+        "Porto"
+      ],
+      "citations": [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "expect_error": true
+    },
+    {
+      "op": "answer",
+      "value": [
+        "Lisbon",
+        "Porto"
+      ],
+      "citations": [
+        "d1",
+        "d2"
+      ]
+    }
+  ],
+  "expect_stdout": "{\"answer\":[\"Lisbon\",\"Porto\"],\"citations\":[{\"doc_id\":\"d1\"},{\"doc_id\":\"d2\"}]}"
+}

@@ -1,0 +1,18 @@
+{
+  "description": "An observation for a challenge the agent registered no handler for is an error the agent is TOLD about, not one it guesses at. Mirrors the batch vector of the same name so both entrypoints fail the same way.",
+  "match_start": {
+    "type": "match_start", "match_id": "m_x", "challenge_id": "some_future_duel",
+    "challenge_version": "1.0.0",
+    "budgets": { "wall_seconds": 600, "tokens": 100000, "tool_calls": 500 },
+    "rounds": 2
+  },
+  "script": [
+    {
+      "observation": {
+        "type": "observation", "round": 0, "turn": 1,
+        "payload": { "role": "attacker", "goal": "unknown", "conversation": [], "turns_remaining": 5 }
+      },
+      "expect_error": "unknown_challenge"
+    }
+  ]
+}

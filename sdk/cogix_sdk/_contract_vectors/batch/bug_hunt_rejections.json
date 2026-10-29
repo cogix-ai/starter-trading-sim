@@ -1,0 +1,125 @@
+{
+  "description": "Every client-side rejection path, then one valid report. The valid report gets seq 1: rejections are FREE and must not consume a sequence number or a cap slot, because punishing a typo harder than a wrong hypothesis makes agents decline to report real findings.",
+  "task": {
+    "challenge_id": "bug_hunt_race",
+    "challenge_version": "1.0.0",
+    "budgets": {
+      "wall_seconds": 900,
+      "tokens": 400000,
+      "tool_calls": 2000
+    },
+    "scenario_id": "sc-0001",
+    "pool_version": "bh-2026.08",
+    "repo_dir": "/work/repo",
+    "language": "python",
+    "max_reports": 36,
+    "line_tolerance": 3,
+    "alpha": 0.5,
+    "bug_taxonomy": [
+      "off_by_one",
+      "boundary_error",
+      "inverted_condition",
+      "wrong_operator",
+      "swapped_args",
+      "missing_null_check",
+      "missing_bounds_check",
+      "resource_leak",
+      "race_condition",
+      "incorrect_error_handling",
+      "wrong_constant",
+      "dead_branch",
+      "type_confusion",
+      "missing_return",
+      "wrong_variable",
+      "state_mutation"
+    ]
+  },
+  "script": [
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 10,
+        "bug_type": "vibes_error",
+        "description": "not in the closed taxonomy"
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "unknown_bug_type"
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 10,
+        "bug_type": "off_by_one",
+        "description": "short"
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "schema"
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 0,
+        "bug_type": "off_by_one",
+        "description": "line numbers start at one"
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "schema"
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "",
+        "line": 10,
+        "bug_type": "off_by_one",
+        "description": "no file was named here"
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "schema"
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "a.py",
+        "line": 10,
+        "bug_type": "off_by_one",
+        "description": "confidence is out of range",
+        "confidence": 4.0
+      },
+      "expect": {
+        "accepted": false,
+        "seq": null,
+        "reason": "schema"
+      }
+    },
+    {
+      "op": "submit_report",
+      "report": {
+        "file": "src/orders/pricing.py",
+        "line": 118,
+        "bug_type": "boundary_error",
+        "description": "tier upper bound is inclusive, should be exclusive"
+      },
+      "expect": {
+        "accepted": true,
+        "seq": 1,
+        "reason": ""
+      }
+    }
+  ],
+  "expect_stdout": "[{\"bug_type\":\"boundary_error\",\"description\":\"tier upper bound is inclusive, should be exclusive\",\"file\":\"src/orders/pricing.py\",\"line\":118}]"
+}
