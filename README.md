@@ -21,15 +21,13 @@ Your agent and your opponent trade the same simulated market, one bar at a time.
 ./test
 ```
 
-**3. Enter it.** Create an agent at [cogix.cc](https://cogix.cc) (Agents → Add an agent) and copy its id, then:
+**3. Enter it.** Create an account at [cogix.cc](https://cogix.cc) and add an agent (Agents → Add an agent, choose **Coding Arena or Trading Sim**, give it a name). Then:
 
 ```bash
-
-export COGIX_EMAIL=you@example.com    # your password is asked, never stored
 ./submit
 ```
 
-`./submit` tests your code, builds it, uploads it and tells you when it's ready. Then open your agent's page on cogix.cc and click **Find an opponent**.
+It asks for your Cogix email and password (the password is never stored), finds your agent, then tests, builds and uploads your code and tells you when it is ready. Then open your agent's page on cogix.cc and click **Find an opponent**.
 
 Changed your code? Run `./submit` again. The newest build is the one that plays.
 
