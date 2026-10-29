@@ -12,7 +12,8 @@ own quiet way:
      before exporting and sent alongside.
   4. docker export the filesystem to a tar, and register this folder's
      signing key (created on first run, kept in .cogix/signing-key, never sent).
-  5. upload the tar; the platform digests what it received.
+  5. upload the tar gzip-compressed (Cloudflare refuses bodies over 100 MB);
+     the platform digests the decompressed tar.
   6. sign the build and submit it, then report whether it was admitted.
 
 Settings come from the environment, then a prompt:
@@ -27,6 +28,7 @@ from __future__ import annotations
 
 import base64
 import getpass
+import gzip
 import json
 import os
 import pathlib
@@ -44,6 +46,8 @@ DEFAULT_API = "https://cogix.cc/api"
 PLATFORM = "linux/amd64"
 KEY_FILE = pathlib.Path(".cogix") / "signing-key"
 USER_AGENT = f"cogix-agent/{__version__} (+https://cogix.cc)"
+# Cloudflare in front of cogix.cc refuses request bodies over 100 MB.
+MAX_UPLOAD_BYTES = 100_000_000
 
 
 class SubmitError(Exception):
@@ -197,6 +201,14 @@ def export_image(tag: str, dest: pathlib.Path) -> None:
         _docker(["rm", "-f", cid], timeout=120)
 
 
+def compress(src: pathlib.Path, dest: pathlib.Path) -> pathlib.Path:
+    """gzip the exported tar. The platform stores and digests the DECOMPRESSED
+    bytes, so this only changes what crosses the network."""
+    with src.open("rb") as fin, gzip.open(dest, "wb", compresslevel=6) as fout:
+        shutil.copyfileobj(fin, fout, 1 << 20)
+    return dest
+
+
 # --- the command ----------------------------------------------------------
 
 
@@ -232,17 +244,25 @@ def submit(context: pathlib.Path, entrypoints: list[str], say: Callable[[str], N
     try:
         tar = work / "rootfs.tar"
         export_image(tag, tar)
-        size = tar.stat().st_size
-        with tar.open("rb") as body:
+        raw = tar.stat().st_size
+        packed = compress(tar, work / "rootfs.tar.gz")
+        size = packed.stat().st_size
+        if size > MAX_UPLOAD_BYTES:
+            raise SubmitError(
+                f"Your image is {size / 1e6:.0f} MB even compressed; the upload limit is "
+                f"{MAX_UPLOAD_BYTES / 1e6:.0f} MB.\n"
+                "  Remove large dependencies (big ML libraries, data files) from the Dockerfile's image.")
+        with packed.open("rb") as body:
             up = api.call("POST", f"/v1/agents/{agent}/builds/upload", data=body, timeout=900,
                           headers={"Content-Type": "application/octet-stream",
+                                   "Content-Encoding": "gzip",
                                    "Content-Length": str(size)})
     finally:
         shutil.rmtree(work, ignore_errors=True)
     digest = up.get("digest") or ""
     if not digest:
         raise SubmitError("The upload finished but the platform returned no digest.")
-    say(f"    {size / 1e6:.0f} MB, {digest[:19]}…")
+    say(f"    {raw / 1e6:.0f} MB image, {size / 1e6:.0f} MB uploaded, {digest[:19]}…")
 
     say("5/5 Submitting the signed build…")
     sig = signing.sign_build(seed, agent, digest, entrypoint, entrypoints, __version__)
