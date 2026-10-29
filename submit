@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # DO NOT EDIT. Builds your agent and enters it on Cogix.
-#   export COGIX_AGENT_ID=ag_...  COGIX_EMAIL=you@example.com   (password is asked)
+#   Asks for your Cogix email and password, then finds your agent.
 set -euo pipefail
 cd "$(dirname "$0")"
 # Install the bundled SDK, again whenever it changes (a stale copy is how
