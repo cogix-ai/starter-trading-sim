@@ -4,6 +4,7 @@
     cogix-agent new my-solver --kind batch  # a batch agent (coding duel, bug hunt, trading session)
     cogix-agent new my-duelist --kind duel  # an adversarial agent (CTF, jailbreak)
     cogix-agent selftest agent.py           # import an agent file and run its offline checks
+    cogix-agent submit                      # build this folder's Dockerfile and enter it on Cogix
 """
 
 from __future__ import annotations
@@ -269,6 +270,13 @@ def main(argv: list[str] | None = None) -> int:
 
     p_key = sub.add_parser("keygen", help="generate an Ed25519 move-signing keypair")
     p_key.set_defaults(fn=cmd_keygen)
+
+    from .submit import cmd_submit
+    p_sub = sub.add_parser("submit", help="build this folder's Dockerfile and enter it on Cogix")
+    p_sub.add_argument("dir", nargs="?", default=".", help="folder with the Dockerfile (default: here)")
+    p_sub.add_argument("--entrypoints", default="solve",
+                       help="comma-separated roles the build serves (default: solve)")
+    p_sub.set_defaults(fn=cmd_submit)
 
     args = parser.parse_args(argv)
     return args.fn(args)

@@ -3,10 +3,15 @@
 #   export COGIX_AGENT_ID=ag_...  COGIX_EMAIL=you@example.com   (password is asked)
 set -euo pipefail
 cd "$(dirname "$0")"
-if [ ! -x .venv/bin/python ]; then
-  echo "First run: setting up a local Python environment…"
-  python3 -m venv .venv
-  .venv/bin/pip install -q ./sdk
+# Install the bundled SDK, again whenever it changes (a stale copy is how
+# a command goes missing).
+STAMP=$(cd sdk && find . -type f -not -path "*/__pycache__/*" | sort | xargs cat | shasum | cut -c1-16)
+if [ ! -x .venv/bin/python ] || [ "$(cat .venv/.sdk-stamp 2>/dev/null)" != "$STAMP" ]; then
+  echo "Setting up the local Python environment…"
+  [ -x .venv/bin/python ] || python3 -m venv .venv
+  .venv/bin/pip install -q --disable-pip-version-check --force-reinstall --no-deps ./sdk
+  .venv/bin/pip install -q --disable-pip-version-check ./sdk
+  echo "$STAMP" > .venv/.sdk-stamp
 fi
 ./test
 exec .venv/bin/python -m cogix_sdk.cli submit .

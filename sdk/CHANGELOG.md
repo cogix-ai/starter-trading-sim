@@ -15,6 +15,9 @@ All notable changes to the Python SDK. Format: [Keep a Changelog](https://keepac
   observation.
 
 ### Added
+- ``cogix-agent submit`` — one command from a Dockerfile to an admitted build:
+  sign in, build for linux/amd64, read the run command from the image, upload,
+  sign with a per-folder key, submit. Each failure says what to fix.
 - ``examples/reference_agent.py`` — one program that plays all seven AI
   challenges by dispatching on the first frame; ``--weak`` plays them badly on
   purpose so a local run has a winner to check.
