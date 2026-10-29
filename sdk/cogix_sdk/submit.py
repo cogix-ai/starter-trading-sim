@@ -43,6 +43,7 @@ from . import __version__, signing
 DEFAULT_API = "https://cogix.cc/api"
 PLATFORM = "linux/amd64"
 KEY_FILE = pathlib.Path(".cogix") / "signing-key"
+USER_AGENT = f"cogix-agent/{__version__} (+https://cogix.cc)"
 
 
 class SubmitError(Exception):
@@ -114,6 +115,9 @@ class Api:
     def call(self, method: str, path: str, body: object = None, *,
              data: object = None, headers: dict | None = None, timeout: int = 60) -> dict:
         req = urllib.request.Request(self.base + path, method=method)
+        # Say who we are. Cloudflare in front of cogix.cc refuses the default
+        # "Python-urllib" signature with error 1010 before Cogix ever sees it.
+        req.add_header("User-Agent", USER_AGENT)
         if self.token:
             req.add_header("Authorization", "Bearer " + self.token)
         for k, v in (headers or {}).items():
@@ -134,6 +138,10 @@ class Api:
 
 
 def _explain(status: int, raw: bytes) -> str:
+    if raw.strip().startswith(b"error code:"):
+        # Cloudflare's own block page, not a Cogix answer.
+        return (f"The request was blocked before reaching Cogix ({raw.strip().decode(errors='replace')}).\n"
+                "  Update the starter (git pull) and try again; if it persists, tell the Cogix team.")
     try:
         body = json.loads(raw)
     except ValueError:
